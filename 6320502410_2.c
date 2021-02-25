@@ -10,25 +10,33 @@ int main()
         scanf("%d",&B[i]);
         c[i]=0;
     }
-    for(i=0; i<n; i++)
+    for(i=1; i<n; i++)
     {
-        if(i==A[i])
+        for(j=0; j<n; j++)
         {
-            if((B[i]>0)&&(B[i]<=5))
+            if(A[j]==i)
             {
-                c[i]=c[i]+B[i];
+                c[i]=c[i]+B[j];
             }
         }
     }
     int max[n];
     max[0]=c[0];
-    for(i=0; i<n; i++)
+    i=0;
+    for(j=0; j<n; j++)
     {
-        if(max[j] < c[i])
+        if(max[j]<c[j])
         {
-            max[j] =c[i]+1;
+            max[i]=j+1;
+        }
+        else if(max[j]==c[j])
+        {
+            i++;
+            max[i]=j+1;
         }
     }
-    printf("%d",max[0]);
-
+    for(j=0; j<i; j++)
+    {
+        printf("%d",max[j]);
+    }
 }
